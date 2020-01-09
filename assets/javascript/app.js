@@ -17,8 +17,8 @@ var questions = [{
 }, {
     question: "How many emmy awards has Family Guy won?",
     answers: ["None", "Seven", "Nine", "Three"],
-    correctAnswer:"./assets/images/emmy-award.jpg",
-    image:
+    correctAnswer:"Nine",
+    image:"./assets/images/emmy-award.jpg"
 }, {
     question: "What is the character name of the mayor on the show?",
     answers: ["Adam West", "Greased-up Deaf Guy", "Carter Pewterschmidt", "Joe Swanson"],
@@ -36,3 +36,38 @@ var questions = [{
     image: "./assets/images/seth-macfarlane-medium.jpg"
 
 }]; 
+
+var game = {
+    questions1: questions, 
+    currentQuestion: 0,
+    counter:30,
+    correct:0,
+    incorrect:0,
+    countdown: function(){
+
+    },
+    loadQuestion: function(){
+
+    },
+    nextQuestion: function(){
+
+    },
+    timesUp: function(){
+
+    },
+    results: function(){
+
+    },
+    clickedOn: function(){
+
+    },
+    answeredCorrectly: function(){
+
+    },
+    answeredIncorrectly: function(){
+
+    },
+    reset: function(){
+
+    }
+}
