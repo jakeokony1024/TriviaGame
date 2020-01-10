@@ -4,7 +4,7 @@ $("#start").on("click", function () {
 
 });
 
-$(document).on('click', 'answer-button', function(e){
+$(document).on('click', function(e){
     game.clickedOn(e);
 });
 
@@ -94,10 +94,10 @@ var game = {
         }
     },
     answeredCorrectly: function () {
-        console.log("YOU GOT IT");
+       
     },
     answeredIncorrectly: function () {
-        console.log("YOU GOT IT");
+        
     },
     reset: function () {
         
