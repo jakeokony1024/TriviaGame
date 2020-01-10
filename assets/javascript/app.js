@@ -42,7 +42,7 @@ var questions = [{
 }];
 
 var game = {
-    questions1: questions,
+    questions: questions,
     currentQuestion: 0,
     counter: 30,
     correct: 0,
@@ -59,8 +59,17 @@ var game = {
         timer = setInterval(game.countdown, 1000);
         $('#subWrapper').html('<h2>' + questions[game.currentQuestion].question + '</h2>');
         for (var i = 0; i < questions[game.currentQuestion].answers.length; i++) {
-            $("#subWrapper").append('<button class="answer-button" id="button-' + i + '" data-name="' + questions[game.currentQuestion].answers[i] + '">' + questions[game.currentQuestion].answers[i] + '</button>');
-        }
+        var a = $("<button>");
+        
+        a.addClass("answer-button");
+        
+        a.attr("data-name", questions[i]);
+        
+        a.text(questions[i]);
+        
+        $("#subWrapper").append(a);
+    }
+
 
     },
     nextQuestion: function () {
@@ -77,7 +86,7 @@ var game = {
     },
     clickedOn: function (e) {
         clearInterval(timer);
-        if ($(e.target).data("name")==questions[game.currentQuestion].correctAnswer){
+        if ($(e.target).data("name")== questions[game.currentQuestion].correctAnswer) {
             game.answeredCorrectly();
         }
         else {
