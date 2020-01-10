@@ -63,9 +63,9 @@ var game = {
         
         a.addClass("answer-button");
         
-        a.attr("data-name", questions[i]);
+        a.attr("data-name", questions[game.currentQuestion].answers[i]);
         
-        a.text(questions[i]);
+        a.text(questions[game.currentQuestion].answers[i]);
         
         $("#subWrapper").append(a);
     }
