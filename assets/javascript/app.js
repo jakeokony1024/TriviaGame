@@ -49,6 +49,7 @@ var game = {
     counter: 30,
     correct: 0,
     incorrect: 0,
+    unAnswered: 0,
     countdown: function () {
         game.counter--;
         $("#counter").html(game.counter);
@@ -88,6 +89,15 @@ var game = {
 
     },
     results: function () {
+        clearInterval(timer);
+        $('#subWrapper').html("<h2> All Finished </h2>");
+        $('#subWrapper').append("<h3> Answered Correctly: " +game.correct+ "</h3>");
+        $('#subWrapper').append("<h3> Answered Incorrectly: " +game.incorrect+ "</h3>");
+        $('#subWrapper').append("<h3> Unanswered: " +game.unAnswered+ "</h3>");
+
+
+
+
 
     },
     clickedOn: function (e) {
@@ -103,12 +113,12 @@ var game = {
         clearInterval(timer);
         game.correct++;
         $("#subWrapper").html("<h2> You got it right! Freakin' sweet! </h2>");
-        $("#subWrapper").append("<img src=./assets/images/" + questions[game.currentQuestion].image + ">");
+        $("#image").append("<img src=./assets/images/stewie.jpg" + questions[game.currentQuestion].image + ">");
 
         if (game.currentQuestion == questions.length - 1) {
-            setTimeout(game.results, 5 * 1000);
+            setTimeout(game.results, 3 * 1000);
         } else {
-            setTimeout(game.nextQuestion, 5 * 1000);
+            setTimeout(game.nextQuestion, 3 * 1000);
         }
 
 
@@ -119,14 +129,19 @@ var game = {
         game.incorrect++;
         $("#subWrapper").html("<h2> Blast! You failed! </h2>");
         $("#subWrapper").append("<h2> The correct answer was: " + questions[game.currentQuestion].correctAnswer + "</h2>");
-        $("#subWrapper").append("<img>" + questions[game.currentQuestion].image + "</img>");
+        $("#image").append("<img src=./assets/images/" + questions[game.currentQuestion].image + ">");
         if (game.currentQuestion == questions.length - 1) {
-            setTimeout(game.results, 5 * 1000);
+            setTimeout(game.results, 3 * 1000);
         } else {
-            setTimeout(game.nextQuestion, 5*1000);
+            setTimeout(game.nextQuestion, 3 * 1000);
         }
     },
     reset: function () {
+        game.currentQuestion = 0;
+        game.counter = 30;
+        game.correct = 0;
+        game.incorrect = 0;
+        game.unAnswered = 0;
 
     }
 }
