@@ -10,6 +10,10 @@ $(document).on('click', '.answer-button', function (e) {
 
 });
 
+$(document).on('click', '#reset', function(){
+
+});
+
 var questions = [{
     question: "What year did the first Family Guy episode air? ",
     answers: ["1998", "2004", "2002", "1999"],
@@ -94,6 +98,7 @@ var game = {
         $('#subWrapper').append("<h3> Answered Correctly: " +game.correct+ "</h3>");
         $('#subWrapper').append("<h3> Answered Incorrectly: " +game.incorrect+ "</h3>");
         $('#subWrapper').append("<h3> Unanswered: " +game.unAnswered+ "</h3>");
+        $('#subWrapper').append("<button id='reset'>RESET!</button>");
 
 
 
@@ -142,6 +147,7 @@ var game = {
         game.correct = 0;
         game.incorrect = 0;
         game.unAnswered = 0;
+        game.loadQuestion();
 
     }
 }
