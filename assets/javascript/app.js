@@ -2,10 +2,12 @@ $("#start").on("click", function () {
     $("#start").remove();
     game.loadQuestion();
 
+
 });
 
-$(document).on('click', function (e) {
+$(document).on('click', '.answer-button', function (e) {
     game.clickedOn(e);
+
 });
 
 var questions = [{
@@ -68,8 +70,8 @@ var game = {
             a.text(questions[game.currentQuestion].answers[i]);
 
             $("#subWrapper").append(a);
-        }
 
+        }
 
     },
     nextQuestion: function () {
@@ -79,6 +81,10 @@ var game = {
         game.loadQuestion();
     },
     timesUp: function () {
+        clearInterval(timer);
+        $("#subWrapper").html("<h2> Oh, too bad, out of time! </h2>");
+        $("#subWrapper").append("<h2> The correct answer was: " + questions[game.currentQuestion].correctAnswer + "</h2>");
+        $("#subWrapper").append("<img src=./assets/images/" + questions[game.currentQuestion].image + ">");
 
     },
     results: function () {
@@ -97,6 +103,8 @@ var game = {
         clearInterval(timer);
         game.correct++;
         $("#subWrapper").html("<h2> You got it right! Freakin' sweet! </h2>");
+        $("#subWrapper").append("<img src=./assets/images/" + questions[game.currentQuestion].image + ">");
+
         if (game.currentQuestion == questions.length - 1) {
             setTimeout(game.results, 5 * 1000);
         } else {
@@ -110,8 +118,12 @@ var game = {
         clearInterval(timer);
         game.incorrect++;
         $("#subWrapper").html("<h2> Blast! You failed! </h2>");
+        $("#subWrapper").append("<h2> The correct answer was: " + questions[game.currentQuestion].correctAnswer + "</h2>");
+        $("#subWrapper").append("<img>" + questions[game.currentQuestion].image + "</img>");
         if (game.currentQuestion == questions.length - 1) {
             setTimeout(game.results, 5 * 1000);
+        } else {
+            setTimeout(game.nextQuestion, 5*1000);
         }
     },
     reset: function () {

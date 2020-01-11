@@ -11,4 +11,4 @@ Third step is to add in the object containing all the questions and in the quest
 
 Fourth step is to add another object for the game, that holds all the functions neccesary for the game, need a function for countdown, results, correct and incorrect answers, the reset, as well as the clicked on and times up function needed to make the game flow correctly. 
 
-Fifth step is to start on the 
+Fifth step is to set the click funtions correctly, and track all the logic, if an answer matches the correct answer it will go to the answered correctly function, if not incorrectly answered function. 
