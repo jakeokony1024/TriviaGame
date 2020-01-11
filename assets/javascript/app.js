@@ -4,7 +4,7 @@ $("#start").on("click", function () {
 
 });
 
-$(document).on('click', function(e){
+$(document).on('click', function (e) {
     game.clickedOn(e);
 });
 
@@ -59,16 +59,16 @@ var game = {
         timer = setInterval(game.countdown, 1000);
         $('#subWrapper').html('<h2>' + questions[game.currentQuestion].question + '</h2>');
         for (var i = 0; i < questions[game.currentQuestion].answers.length; i++) {
-        var a = $("<button>");
-        
-        a.addClass("answer-button");
-        
-        a.attr("data-name", questions[game.currentQuestion].answers[i]);
-        
-        a.text(questions[game.currentQuestion].answers[i]);
-        
-        $("#subWrapper").append(a);
-    }
+            var a = $("<button>");
+
+            a.addClass("answer-button");
+
+            a.attr("data-name", questions[game.currentQuestion].answers[i]);
+
+            a.text(questions[game.currentQuestion].answers[i]);
+
+            $("#subWrapper").append(a);
+        }
 
 
     },
@@ -86,20 +86,35 @@ var game = {
     },
     clickedOn: function (e) {
         clearInterval(timer);
-        if ($(e.target).data("name")== questions[game.currentQuestion].correctAnswer) {
+        if ($(e.target).data("name") == questions[game.currentQuestion].correctAnswer) {
             game.answeredCorrectly();
-        }
-        else {
+        } else {
             game.answeredIncorrectly();
         }
     },
     answeredCorrectly: function () {
-       
+        console.log("You did It")
+        clearInterval(timer);
+        game.correct++;
+        $("#subWrapper").html("<h2> You got it right! Freakin' sweet! </h2>");
+        if (game.currentQuestion == questions.length - 1) {
+            setTimeout(game.results, 5 * 1000);
+        } else {
+            setTimeout(game.nextQuestion, 5 * 1000);
+        }
+
+
     },
     answeredIncorrectly: function () {
-        
+        console.log("Wrong!")
+        clearInterval(timer);
+        game.incorrect++;
+        $("#subWrapper").html("<h2> Blast! You failed! </h2>");
+        if (game.currentQuestion == questions.length - 1) {
+            setTimeout(game.results, 5 * 1000);
+        }
     },
     reset: function () {
-        
+
     }
 }
