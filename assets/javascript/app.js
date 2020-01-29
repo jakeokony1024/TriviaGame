@@ -94,7 +94,7 @@ var game = {
         clearInterval(timer);
         $("#subWrapper").text("<h2> Oh, too bad, out of time! </h2>");
         $("#subWrapper").append("<h2> The correct answer was: " + questions[game.currentQuestion].correctAnswer + "</h2>");
-        $("#subWrapper").html("<img src=./assets/images/" + questions[game.currentQuestion].image + ">");
+        $("#subWrapper").html("<img src=" + questions[game.currentQuestion].image + ">");
 
     },
     results: function () {
@@ -123,7 +123,7 @@ var game = {
         clearInterval(timer);
         game.correct++;
         $("#subWrapper").html("<h2> You got it right! Freakin' sweet! </h2>");
-        $("#image").html("<img src=./assets/images/stewie.jpg" + questions[game.currentQuestion].image + ">");
+        $("#image").html("<img src=" + questions[game.currentQuestion].image + ">");
 
         if (game.currentQuestion == questions.length - 1) {
             setTimeout(game.results, 3 * 1000);
@@ -139,7 +139,7 @@ var game = {
         game.incorrect++;
         $("#subWrapper").html("<h2> Blast! You failed! </h2>");
         $("#subWrapper").append("<h2> The correct answer was: " + questions[game.currentQuestion].correctAnswer + "</h2>");
-        $("#image").html("<img src=./assets/images/" + questions[game.currentQuestion].image + ">");
+        $("#image").html("<img src=" + questions[game.currentQuestion].image + ">");
         if (game.currentQuestion == questions.length - 1) {
             setTimeout(game.results, 3 * 1000);
         } else {
